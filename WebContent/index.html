@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script type="text/javascript">
+		//动画样式
+		$(document).ready(function(){
+			$("#show1").click(function(){
+				$("#hidden1").show(1000);
+				$("#hidden2").hide(1000);
+				$("#title").hide();
+			})
+		})
+		$(document).ready(function(){
+			$("#hidden1").hide();
+			$("#hidden2").hide();
+		})
+		$(document).ready(function(){
+			$("#show2").click(function(){
+				$("#hidden2").show(1000);
+				$("#hidden1").hide(1000);
+				$("#title").hide();
+			})
+		})
+		$(document).ready(function(){
+			$("#title").click(function(){
+				$("#hidden1").show(1000);
+				$("#hidden2").hide(1000);
+				$("#title").hide();
+			})
+		})
+		$(document).ready(function(){
+			$("#pipe").click(function(){
+				$("#title").show();
+				$("#hidden1").hide(1000);
+			})
+		})
+		$(document).ready(function(){
+			$("#pipe1").click(function(){
+				$("#title").show();
+				$("#hidden2").hide(1000);
+			})
+		})
+		//表单验证
+		//登录验证
+		$().ready(function(){
+			$("#form-mid").validate({
+				rules:{
+					name:{
+						required:true
+					},
+					pwd:{
+						required:true
+					},
+				},
+				messages:{
+					name:"请输入用户名",
+					pwd:"请输入密码",
+				},
+			})
+		})
+		//注册验证
+		$().ready(function(){
+			$("#form-mid1").validate({
+				rules:{
+					name:{
+						required:true,
+					},
+					pwd:{
+						required:true,	
+					},
+					rpwd:{
+						required:true,
+						equalTo: "#pwd",
+					},
+				},
+				messages:{
+					name:"用户名不能为空",
+					pwd:"密码不能为空",
+					rpwd:{
+						required:"不能为空",
+						equalTo:"两次密码输入不一致",
+					},
+				},
+			})
+		})
+		</script>
+		<title>首页</title>
+	</head>
+	<body>
+		<div class="head">
+			<div class="letf">
+				<p>在线留言系统</p>
+			</div>
+			<div id="right">
+				<a id="show1" href="#">登录</a>
+				<a id="show2" href="#">注册</a>
+			</div>
+		</div>
+		<div id="title">
+			<h1>在线系统欢迎您的使用</h1>
+		</div>
+		<div id="hidden1" style="background-image: url(img/background.jpg);background-size: 100% 100%;">
+		<div id="pipe">
+			<a href="#">X</a>
+		</div>
+			<form action="Login" method="post" id="form-mid">
+				账号：<input type="text" name="name"/><br>
+				密码：<input type="text" name="pwd"/><br>
+				<input type="submit" name="submit" value="登录"/>
+				<input type="reset" name="reset" vlaue="重置"/>
+			</form>
+		</div>
+		<div id="hidden2" style="background-image: url(img/background.jpg);background-size: 100% 100%;">
+			<div id="pipe1">
+				<a href="#">X</a>
+			</div>
+				<form action="Register" method="post" id="form-mid1" style="margin-top: 200px;margin-left: 40%;">
+					<table>
+						<tr><td>账号：</td><td><input type="text" name="name"></td></tr>
+						<tr><td>密码：</td><td><input type="password" name="pwd" id="pwd"><br></td></tr>
+						<tr><td>重复密码：</td><td><input type="password" name="rpwd"></td></tr>
+						<tr><td><input type="submit" name="submit" value="注册"/></td>
+							<td><input type="reset" name="reset" vlaue="重置"/></td></tr>
+					</table>	
+				</form>
+		</div>
+	</body>
+</html>
